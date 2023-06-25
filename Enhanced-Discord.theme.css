@@ -17,3 +17,16 @@
  @import url(https://mwittrien.github.io/BetterDiscordAddons/Themes/EmojiReplace/base/Apple.css);
  @import url(https://raw.githubusercontent.com/mwittrien/BetterDiscordAddons/master/Themes/SettingsModal/SettingsModal.theme.css);
  @import url(https://raw.githubusercontent.com/mwittrien/BetterDiscordAddons/master/Themes/DiscordRecolor/DiscordRecolor.theme.css);
+ /* @import url(https://mwittrien.github.io/BetterDiscordAddons/Themes/SettingsModal/SettingsModal.css); */
+ /* @import url(https://mwittrien.github.io/BetterDiscordAddons/Themes/DiscordRecolor/DiscordRecolor.css); */
+
+:root {
+
+	/* SettingsIcons */
+	--settingsicons:	1; 				                  /*	Use Settings Icons in User/Server/Channel Settings: 1 = yes, 0 = no	*/
+
+	/* SettingsModal */
+	--settingsmodalbackground: transparent;			/* default:	transparent	(lowest bg color of changed windows, change it in case another theme turns them transparent)	*/
+	--settingsmodalwidth:      115vh;			     	/* default:	960px	(width of the settings modal, px/vw)	*/
+	--settingsmodalheight:     80vh;			      	/* default:	80vh	(height of the settings modal, px/vh)	*/
+}
