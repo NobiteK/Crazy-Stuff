@@ -23,10 +23,10 @@
 :root {
 
 	/* SettingsIcons */
-	--settingsicons:	1; 				                  /*	Use Settings Icons in User/Server/Channel Settings: 1 = yes, 0 = no	*/
+	--settingsicons:	1; 				/* Use Settings Icons in User/Server/Channel Settings: 1 = yes, 0 = no	*/
 
 	/* SettingsModal */
-	--settingsmodalbackground: transparent;			/* default:	transparent	(lowest bg color of changed windows, change it in case another theme turns them transparent)	*/
-	--settingsmodalwidth:      115vh;			     	/* default:	960px	(width of the settings modal, px/vw)	*/
-	--settingsmodalheight:     80vh;			      	/* default:	80vh	(height of the settings modal, px/vh)	*/
+	--settingsmodalbackground: transparent;			/* default: transparent	(lowest bg color of changed windows, change it in case another theme turns them transparent) */
+	--settingsmodalwidth:      1250px;			/* default: 960px	(width of the settings modal, px/vw)	*/
+	--settingsmodalheight:     80vh;			/* default: 80vh	(height of the settings modal, px/vh)	*/
 }
