@@ -9,8 +9,9 @@
 
 /* This theme is a combination of many other themes from different developers and is for personal use only */
 
- @import url(https://nyri4.github.io/Discolored/main.css);
- @import url(https://nyri4.github.io/donators/donators.css);
+ @import url("https://davidnyan10.github.io/GoogleMaterialIcons/GoogleMaterialIcons.css");
+ @import url('https://nyri4.github.io/Discolored/main.css');
+ @import url('https://nyri4.github.io/donators/donators.css');
  @import url(https://raw.githubusercontent.com/mwittrien/BetterDiscordAddons/master/Themes/_res/ThemeDevBadge.css);
  @import url(https://raw.githubusercontent.com/mwittrien/BetterDiscordAddons/master/Themes/_res/SupporterBadge.css);
  /* @import url(https://raw.githubusercontent.com/mwittrien/BetterDiscordAddons/master/Themes/_res/SettingsIcons.css); */
@@ -19,7 +20,6 @@
  @import url(https://raw.githubusercontent.com/mwittrien/BetterDiscordAddons/master/Themes/DiscordRecolor/DiscordRecolor.theme.css);
  /* @import url(https://mwittrien.github.io/BetterDiscordAddons/Themes/SettingsModal/SettingsModal.css); */
  /* @import url(https://mwittrien.github.io/BetterDiscordAddons/Themes/DiscordRecolor/DiscordRecolor.css); */
- @import url(https://raw.githubusercontent.com/quincynyan/GoogleMaterialIcons/main/GoogleMaterialIcons.css);
 
 :root {
 
