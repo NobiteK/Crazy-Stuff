@@ -34,7 +34,10 @@
 	--list-item-transition: 0.2s ease; 		/* channels/members/settings hover transition	  */
 	--unread-bar-transition: 0.2s ease; 		/* unread bar moving into view transition 	  */
 	--icon-spin-transition: 1s ease; 		/* round icon button spin (settings, emoji, etc.) */
-	--corner-text: '🌃';				/* remove discord title			 	  */
+}
+
+.wordmarkWindows-2dq6rw {
+display: none;
 }
 
 /* Custom css from midnight-discord */
@@ -117,25 +120,4 @@ button.button__4f306 /* make user panel buttons round */ {
 
 .theme-light {
 	--text-link: var(--accent-5);
-}
-
-/* top corner title */
-[class^='wordmarkWindows'] {
-	padding: 4px var(--spacing);
-}
-[class^='wordmarkWindows'] > svg {
-	display: none;
-}
-[class^='wordmarkWindows']::after {
-	content: var(--corner-text);
-	display: block;
-	position: relative;
-	height: 16px;
-	line-height: 16px;
-	font-family: var(--font);
-	font-size: 13px;
-	font-weight: 900;
-	color: var(--text-5);
-	transform: scaleX(1.2);
-	margin-left: 6px;
 }
