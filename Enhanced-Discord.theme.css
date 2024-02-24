@@ -139,8 +139,3 @@ button.button__4f306 /* make user panel buttons round */ {
 	transform: scaleX(1.2);
 	margin-left: 6px;
 }
-
-/* top bar height */
-[class^='typeWindows'] {
-	height: calc(var(--spacing) + 8px);
-}
