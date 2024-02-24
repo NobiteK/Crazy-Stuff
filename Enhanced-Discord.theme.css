@@ -26,6 +26,11 @@
 	--settingsmodalbackground: 	transparent;		/* default: transparent	(lowest bg color of changed windows, change it in case another theme turns them transparent) */
 	--settingsmodalwidth:      	1300px;			/* default: 960px	(width of the settings modal, px/vw)	*/
 	--settingsmodalheight:     	80vh;			/* default: 80vh	(height of the settings modal, px/vh)	*/
+
+	--list-item-transition: 0.2s ease; /* channels/members/settings hover transition */
+	--unread-bar-transition: 0.2s ease; /* unread bar moving into view transition */
+	--moon-spin-transition: 0.4s ease; /* moon icon spin */
+	--icon-spin-transition: 1s ease; /* round icon button spin (settings, emoji, etc.) */
 }
 
 /* list hover animations */
