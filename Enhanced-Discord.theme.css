@@ -34,7 +34,7 @@
 	--list-item-transition: 0.2s ease; 		/* channels/members/settings hover transition	  */
 	--unread-bar-transition: 0.2s ease; 		/* unread bar moving into view transition 	  */
 	--icon-spin-transition: 1s ease; 		/* round icon button spin (settings, emoji, etc.) */
-	--corner-text: '';				/* remove discord title			 	  */
+	--corner-text: '🌃';				/* remove discord title			 	  */
 }
 
 /* Custom css from midnight-discord */
@@ -143,40 +143,4 @@ button.button__4f306 /* make user panel buttons round */ {
 /* top bar height */
 [class^='typeWindows'] {
 	height: calc(var(--spacing) + 8px);
-}
-
-/* window controls */
-[class^='winButton'] > svg {
-	display: none;
-}
-[class^='winButton'] {
-	background: none !important;
-	top: 0;
-	width: calc(var(--spacing) + 8px);
-	height: calc(var(--spacing) + 8px);
-	margin: -2px 4px 0px 0px;
-}
-[class^='winButtonClose'] {
-	margin: -2px calc(var(--spacing) - 4px) 0px 0px;
-}
-[class^='winButton']::after {
-	content: '';
-	height: 12px;
-	width: 12px;
-	border-radius: 12px;
-}
-[class^='winButton']:hover::after {
-	filter: brightness(0.8);
-}
-[class^='winButton']:active::after {
-	transform: scale(0.9);
-}
-[class^='winButtonClose']::after {
-	background-color: var(--dnd-indicator) !important;
-}
-[class^='winButtonMinMax']:nth-child(3)::after {
-	background-color: var(--online-indicator) !important;
-}
-[class^='winButtonMinMax']:nth-child(4)::after {
-	background-color: var(--idle-indicator) !important;
 }
