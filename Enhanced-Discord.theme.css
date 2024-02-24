@@ -33,6 +33,7 @@
 	/* midnight-discord */
 	--list-item-transition: 0.2s ease; 		/* channels/members/settings hover transition	  */
 	--unread-bar-transition: 0.2s ease; 		/* unread bar moving into view transition 	  */
+	--moon-spin-transition: 0.4s ease; 		/* moon icon spin 				  */
 	--icon-spin-transition: 1s ease; 		/* round icon button spin (settings, emoji, etc.) */
 	
 	--discord-icon: none; 	/* discord icon */
