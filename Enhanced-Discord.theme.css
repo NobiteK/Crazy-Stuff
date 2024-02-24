@@ -27,22 +27,17 @@
 
 	/* SettingsModal */
 	--settingsmodalbackground: 	transparent;		/* default: transparent	(lowest bg color of changed windows, change it in case another theme turns them transparent) */
-	--settingsmodalwidth:      	1300px;			/* default: 960px	(width of the settings modal, px/vw)	*/
+	--settingsmodalwidth:      	1500px;			/* default: 960px	(width of the settings modal, px/vw)	*/
 	--settingsmodalheight:     	80vh;			/* default: 80vh	(height of the settings modal, px/vh)	*/
 
 	/* midnight-discord */
 	--list-item-transition: 0.2s ease; 		/* channels/members/settings hover transition	  */
 	--unread-bar-transition: 0.2s ease; 		/* unread bar moving into view transition 	  */
-	--moon-spin-transition: 0.4s ease; 		/* moon icon spin 				  */
 	--icon-spin-transition: 1s ease; 		/* round icon button spin (settings, emoji, etc.) */
-	
-	--discord-icon: none; 	/* discord icon */
-	--moon-icon: block; 	/* moon icon */
-	--moon-icon-url: url('https://upload.wikimedia.org/wikipedia/commons/c/c4/Font_Awesome_5_solid_moon.svg'); /* custom icon url */
-	--moon-icon-size: auto;
+	--corner-text: '';				/* remove discord title			 	  */
 }
 
-/* Custom Animations from midnight-discord */
+/* Custom css from midnight-discord */
 
 /* list hover animations */
 .wrapper__7bcde .link__95dc0 /* channels */,
@@ -124,38 +119,64 @@ button.button__4f306 /* make user panel buttons round */ {
 	--text-link: var(--accent-5);
 }
 
-/* custom dm button moon icon */
-.childWrapper__01b9c > svg:not(.favoriteIcon_adf80e) {
-	display: var(--discord-icon);
+/* top corner title */
+[class^='wordmarkWindows'] {
+	padding: 4px var(--spacing);
 }
-.childWrapper__01b9c:has(> svg:not(.favoriteIcon_adf80e))::before {
-	content: '';
-	display: var(--moon-icon);
-	position: absolute;
-	width: 65%;
-	height: 65%;
-	background: var(--text-4);
-	-webkit-mask-image: var(--moon-icon-url);
-	-webkit-mask-size: var(--moon-icon-size);
-	-webkit-mask-repeat: none;
+[class^='wordmarkWindows'] > svg {
+	display: none;
 }
-.wrapper_d281dd:hover .childWrapper__01b9c::before {
-	transition: background-color 0.15s ease-out, transform var(--moon-spin-transition);
-	transform: rotate(0deg) scale(1);
-}
-.wrapper_d281dd:hover > .childWrapper__01b9c::before,
-.wrapper_d281dd.selected_f5ec8e > .childWrapper__01b9c::before {
-	background: var(--text-0);
-	transform: rotate(-360deg) scale(0.8);
-}
-.lowerBadge__669e7::before {
-	content: '';
+[class^='wordmarkWindows']::after {
+	content: var(--corner-text);
 	display: block;
-	position: absolute;
-	width: 24px;
-	height: 24px;
-	transform: translate(-4px, -4px);
-	z-index: -1;
-	background: var(--bg-3);
-	border-radius: 50%;
+	position: relative;
+	height: 16px;
+	line-height: 16px;
+	font-family: var(--font);
+	font-size: 13px;
+	font-weight: 900;
+	color: var(--text-5);
+	transform: scaleX(1.2);
+	margin-left: 6px;
+}
+
+/* top bar height */
+[class^='typeWindows'] {
+	height: calc(var(--spacing) + 8px);
+}
+
+/* window controls */
+[class^='winButton'] > svg {
+	display: none;
+}
+[class^='winButton'] {
+	background: none !important;
+	top: 0;
+	width: calc(var(--spacing) + 8px);
+	height: calc(var(--spacing) + 8px);
+	margin: -2px 4px 0px 0px;
+}
+[class^='winButtonClose'] {
+	margin: -2px calc(var(--spacing) - 4px) 0px 0px;
+}
+[class^='winButton']::after {
+	content: '';
+	height: 12px;
+	width: 12px;
+	border-radius: 12px;
+}
+[class^='winButton']:hover::after {
+	filter: brightness(0.8);
+}
+[class^='winButton']:active::after {
+	transform: scale(0.9);
+}
+[class^='winButtonClose']::after {
+	background-color: var(--dnd-indicator) !important;
+}
+[class^='winButtonMinMax']:nth-child(3)::after {
+	background-color: var(--online-indicator) !important;
+}
+[class^='winButtonMinMax']:nth-child(4)::after {
+	background-color: var(--idle-indicator) !important;
 }
