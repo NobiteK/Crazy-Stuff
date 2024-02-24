@@ -17,6 +17,8 @@
  @import url(https://raw.githubusercontent.com/mwittrien/BetterDiscordAddons/master/Themes/SettingsModal/SettingsModal.theme.css);
  @import url(https://raw.githubusercontent.com/mwittrien/BetterDiscordAddons/master/Themes/DiscordRecolor/DiscordRecolor.theme.css);
 
+ @import url(https://discord-extensions.github.io/bubble-bar/src/source.css);
+
  @import url(https://maendisease.github.io/BetterDiscordStuff/Themes/Float/addon/RemoveMinimumSize.css) (width: 940px); /* Warning to Remove Minimum Size */
  @import url(https://maendisease.github.io/BetterDiscordStuff/Themes/Float/Float.css) (max-width: 940px);
 
@@ -27,7 +29,7 @@
 
 	/* SettingsModal */
 	--settingsmodalbackground: 	transparent;		/* default: transparent	(lowest bg color of changed windows, change it in case another theme turns them transparent) */
-	--settingsmodalwidth:      	960px;			/* default: 960px	(width of the settings modal, px/vw)	*/
+	--settingsmodalwidth:      	1350px;			/* default: 960px	(width of the settings modal, px/vw)	*/
 	--settingsmodalheight:     	80vh;			/* default: 80vh	(height of the settings modal, px/vh)	*/
 
 	/* midnight-discord */
@@ -36,7 +38,7 @@
 	--icon-spin-transition: 1s ease; 		/* round icon button spin (settings, emoji, etc.) */
 }
 
-/* Custom css from midnight-discord */
+/*  		 Custom CSS from midnight-discord 		*/
 
 /* list hover animations */
 .wrapper__7bcde .link__95dc0 /* channels */,
@@ -116,4 +118,25 @@ button.button__4f306 /* make user panel buttons round */ {
 
 .theme-light {
 	--text-link: var(--accent-5);
+}
+
+/* reduced motion */
+:root.reduce-motion {
+	--list-item-transition: none;
+	--unread-bar-transition: none;
+	--icon-spin-transition: none;
+}
+
+
+/* 		Custom CSS fixes etc.		 */
+
+/* Tall profile banners */
+.popoutBanner-3cqRD9 {
+    height: 120px;
+}
+.profileBanner-1owKI5 {
+    height: 240px;
+}
+.avatarPositionNormal-2jWoC2 {
+    top: 76px;
 }
