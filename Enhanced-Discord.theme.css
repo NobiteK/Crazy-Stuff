@@ -9,8 +9,6 @@
 
 /* This theme is a combination of many other themes from different developers and is for personal use only */
 
- @import url(https://minidiscordthemes.github.io/FluentStatusIcons/fsi.min.css);
-
  @import url(https://nyri4.github.io/Discolored/main.css);
  @import url(https://nyri4.github.io/donators/donators.css);
 
@@ -28,4 +26,39 @@
 	--settingsmodalbackground: 	transparent;		/* default: transparent	(lowest bg color of changed windows, change it in case another theme turns them transparent) */
 	--settingsmodalwidth:      	1300px;			/* default: 960px	(width of the settings modal, px/vw)	*/
 	--settingsmodalheight:     	80vh;			/* default: 80vh	(height of the settings modal, px/vh)	*/
+}
+
+/* list hover animations */
+.wrapper__7bcde .link__95dc0 /* channels */,
+.container__4f20e /* members */,
+.channel_c21703 /* dms */,
+.side_b4b3f6 .item__48dda /* settings */ {
+	transition: margin-left var(--list-item-transition);
+}
+.wrapper__7bcde:hover .link__95dc0,
+.side_b4b3f6 .item__48dda:hover {
+	margin-left: 10px;
+}
+.container__4f20e:hover,
+.channel_c21703:hover {
+	margin-left: 18px;
+}
+
+/* spin hover animations */
+button.button__4f306 /* make user panel buttons round */ {
+	border-radius: 50%;
+}
+.button__4f306:last-child .contents_fb6220 /* settings button */, 
+.attachButton_b1db83 .attachButtonInner__3ce2b /* upload button */,
+.emojiButton__30ec7 .contents_fb6220 /* emoji button */,
+.closeButton__34341 /* settings exit button */,
+.contents_fb6220 > .closeIcon__5bab9 /* modal close */ {
+	transition: transform var(--icon-spin-transition);
+}
+.button__4f306:last-child:hover .contents_fb6220,
+.attachButton_b1db83:hover .attachButtonInner__3ce2b,
+.emojiButton__30ec7:hover .contents_fb6220,
+.closeButton__34341:hover,
+.contents_fb6220:hover > .closeIcon__5bab9 {
+	transform: rotate(360deg);
 }
