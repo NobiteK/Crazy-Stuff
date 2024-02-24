@@ -9,9 +9,11 @@
 
 /* This theme is a combination of many other themes from different developers and is for personal use only */
 
- @import url(https://stickfab.github.io/pc-fluenticons/FluentIcons.css);
+ 
+
  @import url(https://nyri4.github.io/Discolored/main.css);
  @import url(https://nyri4.github.io/donators/donators.css);
+
  @import url(https://raw.githubusercontent.com/mwittrien/BetterDiscordAddons/master/Themes/_res/SupporterBadge.css);
  @import url(https://mwittrien.github.io/BetterDiscordAddons/Themes/EmojiReplace/base/Apple.css);
  @import url(https://raw.githubusercontent.com/mwittrien/BetterDiscordAddons/master/Themes/SettingsModal/SettingsModal.theme.css);
@@ -24,6 +26,6 @@
 
 	/* SettingsModal */
 	--settingsmodalbackground: 	transparent;		/* default: transparent	(lowest bg color of changed windows, change it in case another theme turns them transparent) */
-	--settingsmodalwidth:      	1200px;			/* default: 960px	(width of the settings modal, px/vw)	*/
+	--settingsmodalwidth:      	1250px;			/* default: 960px	(width of the settings modal, px/vw)	*/
 	--settingsmodalheight:     	80vh;			/* default: 80vh	(height of the settings modal, px/vh)	*/
 }
