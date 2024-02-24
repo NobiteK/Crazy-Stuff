@@ -1,7 +1,7 @@
 /*
- * @name         「🌃」Enhanced Discord
+ * @name         Enhanced Discord ☁️
  * @author       NobiteK
- * @description  「🌌」Enhanced Discord theme made by NobiteK
+ * @description  Enhanced Discord Theme ⛅
  * @version      3.0
  * @invite       ZSCFu2J
  * @authorId     430436408386125824
@@ -26,6 +26,6 @@
 
 	/* SettingsModal */
 	--settingsmodalbackground: 	transparent;		/* default: transparent	(lowest bg color of changed windows, change it in case another theme turns them transparent) */
-	--settingsmodalwidth:      	1350px;			/* default: 960px	(width of the settings modal, px/vw)	*/
+	--settingsmodalwidth:      	1300px;			/* default: 960px	(width of the settings modal, px/vw)	*/
 	--settingsmodalheight:     	80vh;			/* default: 80vh	(height of the settings modal, px/vh)	*/
 }
