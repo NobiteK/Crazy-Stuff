@@ -29,7 +29,6 @@
 
 	--list-item-transition: 0.2s ease; /* channels/members/settings hover transition */
 	--unread-bar-transition: 0.2s ease; /* unread bar moving into view transition */
-	--moon-spin-transition: 0.4s ease; /* moon icon spin */
 	--icon-spin-transition: 1s ease; /* round icon button spin (settings, emoji, etc.) */
 }
 
@@ -66,4 +65,49 @@ button.button__4f306 /* make user panel buttons round */ {
 .closeButton__34341:hover,
 .contents_fb6220:hover > .closeIcon__5bab9 {
 	transform: rotate(360deg);
+}
+
+/* hide unread bar on hover */
+.messagesWrapper_ea2b0b {
+	overflow: hidden;
+}
+.newMessagesBar__8b6d7 {
+	top: -48px;
+	height: 72px;
+	transition: top var(--unread-bar-transition);
+	background: none;
+	box-shadow: none;
+	border-radius: 0;
+}
+.newMessagesBar__8b6d7::before {
+	content: '';
+	background: var(--brand-experiment);
+	box-shadow: var(--elevation-low);
+	width: 100%;
+	position: absolute;
+	height: 32px;
+	border-radius: var(--roundness-s);
+}
+.newMessagesBar__8b6d7:hover {
+	top: -12px;
+}
+.top__18077 > .containerPadding_b3087b {
+	padding: 16px;
+	margin-top: -40px;
+	transition: margin-top var(--unread-bar-transition);
+}
+.top__18077:hover > .containerPadding_b3087b:hover {
+	margin-top: -12px;
+}
+.bottom__9717f > .containerPadding_b3087b {
+	padding: 16px;
+	margin-bottom: -40px;
+	transition: margin-bottom var(--unread-bar-transition);
+}
+.bottom__9717f > .containerPadding_b3087b:hover {
+	margin-bottom: -12px;
+}
+
+.theme-light {
+	--text-link: var(--accent-5);
 }
