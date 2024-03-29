@@ -41,45 +41,45 @@
 /*  		 Custom CSS from midnight-discord 		*/
 
 /* list hover animations */
-.wrapper__7bcde .link__95dc0 /* channels */,
-.container__4f20e /* members */,
-.channel_c21703 /* dms */,
+.wrapper__612a5 .link_ddbb36 /* channels */,
+.container_a48b21 /* members */,
+.channel__0aef5 /* dms */,
 .side_b4b3f6 .item__48dda /* settings */ {
 	transition: margin-left var(--list-item-transition);
 }
-.wrapper__7bcde:hover .link__95dc0,
+.wrapper__612a5:hover .link_ddbb36,
 .side_b4b3f6 .item__48dda:hover {
 	margin-left: 10px;
 }
-.container__4f20e:hover,
-.channel_c21703:hover {
+.container_a48b21:hover,
+.channel__0aef5:hover {
 	margin-left: 18px;
 }
 
 /* spin hover animations */
-button.button__4f306 /* make user panel buttons round */ {
+button.button_ae40a4 /* make user panel buttons round */ {
 	border-radius: 50%;
 }
-.button__4f306:last-child .contents_fb6220 /* settings button */, 
-.attachButton_b1db83 .attachButtonInner__3ce2b /* upload button */,
-.emojiButton__30ec7 .contents_fb6220 /* emoji button */,
-.closeButton__34341 /* settings exit button */,
-.contents_fb6220 > .closeIcon__5bab9 /* modal close */ {
+.button_ae40a4:last-child .contents__322f4 /* settings button */, 
+.attachButton__56f98 .attachButtonInner__84c26 /* upload button */,
+.emojiButton_b63c38 .contents__322f4 /* emoji button */,
+.closeButton__8177f /* settings exit button */,
+.contents__322f4 > .closeIcon__16020 /* modal close */ {
 	transition: transform var(--icon-spin-transition);
 }
-.button__4f306:last-child:hover .contents_fb6220,
-.attachButton_b1db83:hover .attachButtonInner__3ce2b,
-.emojiButton__30ec7:hover .contents_fb6220,
-.closeButton__34341:hover,
-.contents_fb6220:hover > .closeIcon__5bab9 {
+.button_ae40a4:last-child:hover .contents__322f4,
+.attachButton__56f98:hover .attachButtonInner__84c26,
+.emojiButton_b63c38:hover .contents__322f4,
+.closeButton__8177f:hover,
+.contents__322f4:hover > .closeIcon__16020 {
 	transform: rotate(360deg);
 }
 
 /* hide unread bar on hover */
-.messagesWrapper_ea2b0b {
+.messagesWrapper_add28b {
 	overflow: hidden;
 }
-.newMessagesBar__8b6d7 {
+.newMessagesBar__8b272 {
 	top: -48px;
 	height: 72px;
 	transition: top var(--unread-bar-transition);
@@ -87,37 +87,32 @@ button.button__4f306 /* make user panel buttons round */ {
 	box-shadow: none;
 	border-radius: 0;
 }
-.newMessagesBar__8b6d7::before {
+.newMessagesBar__8b272::before {
 	content: '';
 	background: var(--brand-experiment);
 	box-shadow: var(--elevation-low);
-	width: 100%;
-	position: absolute;
+	@@ -796,23 +796,23 @@ button.button__4f306 /* make user panel buttons round */ {
 	height: 32px;
 	border-radius: var(--roundness-s);
 }
-.newMessagesBar__8b6d7:hover {
+.newMessagesBar__8b272:hover {
 	top: -12px;
 }
-.top__18077 > .containerPadding_b3087b {
+.top__81fa6 > .containerPadding_ca1052 {
 	padding: 16px;
 	margin-top: -40px;
 	transition: margin-top var(--unread-bar-transition);
 }
-.top__18077:hover > .containerPadding_b3087b:hover {
+.top__81fa6:hover > .containerPadding_ca1052:hover {
 	margin-top: -12px;
 }
-.bottom__9717f > .containerPadding_b3087b {
+.bottom__53f5a > .containerPadding_ca1052 {
 	padding: 16px;
 	margin-bottom: -40px;
 	transition: margin-bottom var(--unread-bar-transition);
 }
-.bottom__9717f > .containerPadding_b3087b:hover {
+.bottom__53f5a > .containerPadding_ca1052:hover {
 	margin-bottom: -12px;
-}
-
-.theme-light {
-	--text-link: var(--accent-5);
 }
 
 /* reduced motion */
@@ -127,6 +122,32 @@ button.button__4f306 /* make user panel buttons round */ {
 	--icon-spin-transition: none;
 }
 
+/* improve unread divider */
+.divider__855e3 {
+	border-width: 4px;
+	border-radius: 4px;
+}
+.divider__855e3 .content__7191e {
+	margin-top: -3px;
+}
+.endCap__95d53 {
+	margin-top: -1px;
+	padding-top: 2px;
+}
+
+/* improve highlight message left edge */
+.message_ccca67.mentioned_fa6fd2::before,
+.replying__38514::before {
+	width: 4px;
+	border-radius: 4px;
+}
+
+/* fix padding */
+#vc-spotify-player /* vencord spotify */,
+.container_e1958d /* vc panel */,
+.panel_bd8c76 /* stream panel */ {
+	padding: 10px;
+}
 
 /* 		Custom CSS fixes etc.		 */
 
