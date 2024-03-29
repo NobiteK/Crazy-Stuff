@@ -34,7 +34,6 @@
 
 	/* midnight-discord */
 	--list-item-transition: 0.2s ease; 		/* channels/members/settings hover transition	  */
-	--unread-bar-transition: 0.2s ease; 		/* unread bar moving into view transition 	  */
 	--icon-spin-transition: 1s ease; 		/* round icon button spin (settings, emoji, etc.) */
 }
 
@@ -75,50 +74,9 @@ button.button_ae40a4 /* make user panel buttons round */ {
 	transform: rotate(360deg);
 }
 
-/* hide unread bar on hover */
-.messagesWrapper_add28b {
-	overflow: hidden;
-}
-.newMessagesBar__8b272 {
-	top: -48px;
-	height: 72px;
-	transition: top var(--unread-bar-transition);
-	background: none;
-	box-shadow: none;
-	border-radius: 0;
-}
-.newMessagesBar__8b272::before {
-	content: '';
-	background: var(--brand-experiment);
-	box-shadow: var(--elevation-low);
-	@@ -796,23 +796,23 @@ button.button__4f306 /* make user panel buttons round */ {
-	height: 32px;
-	border-radius: var(--roundness-s);
-}
-.newMessagesBar__8b272:hover {
-	top: -12px;
-}
-.top__81fa6 > .containerPadding_ca1052 {
-	padding: 16px;
-	margin-top: -40px;
-	transition: margin-top var(--unread-bar-transition);
-}
-.top__81fa6:hover > .containerPadding_ca1052:hover {
-	margin-top: -12px;
-}
-.bottom__53f5a > .containerPadding_ca1052 {
-	padding: 16px;
-	margin-bottom: -40px;
-	transition: margin-bottom var(--unread-bar-transition);
-}
-.bottom__53f5a > .containerPadding_ca1052:hover {
-	margin-bottom: -12px;
-}
-
 /* reduced motion */
 :root.reduce-motion {
 	--list-item-transition: none;
-	--unread-bar-transition: none;
 	--icon-spin-transition: none;
 }
 
@@ -130,8 +88,8 @@ button.button_ae40a4 /* make user panel buttons round */ {
 }
 
 
-/* 		Custom CSS fixes etc.		 */
 
+/* 		Custom CSS fixes etc.		 */
 
 /* Tall profile banners */
 .popoutBanner__3fbe8 {
