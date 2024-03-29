@@ -122,26 +122,6 @@ button.button_ae40a4 /* make user panel buttons round */ {
 	--icon-spin-transition: none;
 }
 
-/* improve unread divider */
-.divider__855e3 {
-	border-width: 4px;
-	border-radius: 4px;
-}
-.divider__855e3 .content__7191e {
-	margin-top: -3px;
-}
-.endCap__95d53 {
-	margin-top: -1px;
-	padding-top: 2px;
-}
-
-/* improve highlight message left edge */
-.message_ccca67.mentioned_fa6fd2::before,
-.replying__38514::before {
-	width: 4px;
-	border-radius: 4px;
-}
-
 /* fix padding */
 #vc-spotify-player /* vencord spotify */,
 .container_e1958d /* vc panel */,
@@ -149,15 +129,14 @@ button.button_ae40a4 /* make user panel buttons round */ {
 	padding: 10px;
 }
 
+
 /* 		Custom CSS fixes etc.		 */
 
+
 /* Tall profile banners */
-.popoutBanner-3cqRD9 {
+.popoutBanner__3fbe8 {
     height: 120px;
 }
-.profileBanner-1owKI5 {
+.panelBanner__7d7e2 {
     height: 240px;
-}
-.avatarPositionNormal-2jWoC2 {
-    top: 76px;
 }
