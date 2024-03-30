@@ -37,8 +37,8 @@
 	--icon-spin-transition: 1s ease; 		/* round icon button spin (settings, emoji, etc.) */
 
 	/* bubble-bar */
-	--channeltextarea-rounding: 50px !important;
-	--channeltextarea-button-rounding: 60% !important;
+	--channeltextarea-rounding: 10px !important;
+	--channeltextarea-button-rounding: 10% !important;
 
 }
 
