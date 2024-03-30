@@ -29,11 +29,11 @@
 
 	/* SettingsModal */
 	--settingsmodalbackground: 	transparent;		/* default: transparent	(lowest bg color of changed windows, change it in case another theme turns them transparent) */
-	--settingsmodalwidth:      	1350px;			/* default: 960px	(width of the settings modal, px/vw)	*/
+	--settingsmodalwidth:      	1400px;			/* default: 960px	(width of the settings modal, px/vw)	*/
 	--settingsmodalheight:     	80vh;			/* default: 80vh	(height of the settings modal, px/vh)	*/
 
 	/* midnight-discord */
-	--list-item-transition: 0.2s ease; 		/* channels/members/settings hover transition	  */
+	--list-item-transition: 0.15s ease; 		/* channels/members/settings hover transition	  */
 	--icon-spin-transition: 1s ease; 		/* round icon button spin (settings, emoji, etc.) */
 }
 
