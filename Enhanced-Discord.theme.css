@@ -19,8 +19,6 @@
 
  @import url(https://discord-extensions.github.io/bubble-bar/src/source.css);
 
- @import url(https://raw.githubusercontent.com/BlackSparowYT/Zelk-Discord-Theme-Fixes/main/main-fixes.css);
-
  @import url(https://maendisease.github.io/BetterDiscordStuff/Themes/Float/addon/RemoveMinimumSize.css) (width: 940px); /* Warning to Remove Minimum Size */
  @import url(https://maendisease.github.io/BetterDiscordStuff/Themes/Float/Float.css) (max-width: 940px);
 
@@ -38,11 +36,9 @@
 	--list-item-transition: 0.15s ease; 		/* channels/members/settings hover transition	  */
 	--icon-spin-transition: 1s ease; 		/* round icon button spin (settings, emoji, etc.) */
 
-	/* custom css variables */
-
 }
 
-/*			Custom CSS from midnight-discord			r*/
+/*		 Custom CSS from midnight-discord		*/
 
 /* list hover animations */
 .wrapper__612a5 .link_ddbb36 /* channels */,
@@ -93,5 +89,53 @@ button.button_ae40a4 /* make user panel buttons round */ {
 }
 
 
-/* 			Custom CSS fixes etc.			 */
 
+/*		Custom CSS fixes etc.		*/
+
+/* SOON */
+
+/* Compact Discord Channels */
+
+/* Reduce the height of channel names */
+.channelName-3V6Qzi {
+    padding-top: 4px; /* Adjust as needed */
+    padding-bottom: 4px; /* Adjust as needed */
+}
+
+/* Reduce the height of channel categories */
+.containerDefault-7RImuF {
+    padding-top: 2px; /* Adjust as needed */
+    padding-bottom: 2px; /* Adjust as needed */
+}
+
+/* Reduce padding around channel icons */
+.channelIcon-3VxXr2 {
+    margin-top: 2px; /* Adjust as needed */
+    margin-bottom: 2px; /* Adjust as needed */
+}
+
+/* Reduce height of channel list items */
+.wrapper-1Rf91z {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Example of reducing font size for channel names */
+.channelName-3V6Qzi, .channelTopic-1swRGA {
+    font-size: 12px; /* Adjust as needed */
+}
+
+/* Example of reducing font size for channel categories */
+.containerDefault-7RImuF .title-1pmpPr {
+    font-size: 12px; /* Adjust as needed */
+}
+
+/* Example of reducing font size for server names */
+.guildName-1fMa6Z {
+    font-size: 14px; /* Adjust as needed */
+}
+
+/* Example of reducing font size for user names in member list */
+.member-3W1lQa {
+    font-size: 12px; /* Adjust as needed */
+}
