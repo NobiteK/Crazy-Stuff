@@ -93,30 +93,3 @@ button.button_ae40a4 /* make user panel buttons round */ {
 /*		Custom CSS fixes etc.		*/
 
 /* SOON */
-
-/* Compact channels and DMs */
-
-/* Compact channel list */
-.channel-2QD9_O {
-    padding: 4px 8px; /* Adjust padding as needed */
-}
-
-/* Compact DM list */
-.privateChannels-1nO12o {
-    padding: 4px 8px; /* Adjust padding as needed */
-}
-
-/* Compact channel names */
-.channelName-1G03vu {
-    font-size: 14px; /* Adjust font size as needed */
-}
-
-/* Compact DM names */
-.avatar-1BDn8e, .privateChannel-1PZMSo {
-    padding: 2px; /* Adjust padding as needed */
-}
-.avatar-1BDn8e img, .privateChannel-1PZMSo img {
-    width: 20px; /* Adjust avatar size as needed */
-    height: 20px; /* Adjust avatar size as needed */
-    border-radius: 50%;
-}
