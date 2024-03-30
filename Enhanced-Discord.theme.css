@@ -33,8 +33,13 @@
 	--settingsmodalheight:     	80vh;			/* default: 80vh	(height of the settings modal, px/vh)	*/
 
 	/* midnight-discord */
-	--list-item-transition: 0.15s ease; 		/* channels/members/settings hover transition	  */
+	--list-item-transition: 0.1s ease; 		/* channels/members/settings hover transition	  */
 	--icon-spin-transition: 1s ease; 		/* round icon button spin (settings, emoji, etc.) */
+
+	/* custom css variables */
+	--category-spacing: 0px;
+	--channel-spacing: 4px;
+	--reply-arrow-colour: #6580cfCC;
 }
 
 /*  		 Custom CSS from midnight-discord 		*/
@@ -97,4 +102,38 @@ button.button_ae40a4 /* make user panel buttons round */ {
 }
 .panelBanner__7d7e2 {
     height: 240px;
+}
+
+/* Compact Channels Tweaks */
+.containerDefault-3TQ5YN, .containerDragAfter-1J_-1V, .containerDragBefore-ei4h1m, .containerUserOver-3woq86 {
+    padding-top: var(--category-spacing);
+}
+
+.mainContent-20q_Hp {
+    padding: var(--channel-spacing);
+}
+
+/* Role Tags Tweaks */
+#app-mount .roleCircle-1EgnFN::after {
+	content: "";			
+	position: absolute;
+	height: 22px;
+	width: 100%;
+	left: 0px;
+	background: inherit;
+	opacity: 0.70;
+	z-index: -1;
+	border-radius:4px;
+}
+
+#app-mount .role-2TIOKu {
+	position: relative;
+	z-index: 1;
+	background: inherit;
+}
+
+/* Reply Arrow Colour Tweaks */
+#app-mount .repliedMessage-3Z6XBG:before {
+	border-left: var(--spine-width) solid var(--reply-arrow-colour);
+	border-top: var(--spine-width) solid var(--reply-arrow-colour);
 }
