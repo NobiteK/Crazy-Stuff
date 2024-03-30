@@ -94,48 +94,29 @@ button.button_ae40a4 /* make user panel buttons round */ {
 
 /* SOON */
 
-/* Compact Discord Channels */
+/* Compact channels and DMs */
 
-/* Reduce the height of channel names */
-.channelName-3V6Qzi {
-    padding-top: 4px; /* Adjust as needed */
-    padding-bottom: 4px; /* Adjust as needed */
+/* Compact channel list */
+.channel-2QD9_O {
+    padding: 4px 8px; /* Adjust padding as needed */
 }
 
-/* Reduce the height of channel categories */
-.containerDefault-7RImuF {
-    padding-top: 2px; /* Adjust as needed */
-    padding-bottom: 2px; /* Adjust as needed */
+/* Compact DM list */
+.privateChannels-1nO12o {
+    padding: 4px 8px; /* Adjust padding as needed */
 }
 
-/* Reduce padding around channel icons */
-.channelIcon-3VxXr2 {
-    margin-top: 2px; /* Adjust as needed */
-    margin-bottom: 2px; /* Adjust as needed */
+/* Compact channel names */
+.channelName-1G03vu {
+    font-size: 14px; /* Adjust font size as needed */
 }
 
-/* Reduce height of channel list items */
-.wrapper-1Rf91z {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
+/* Compact DM names */
+.avatar-1BDn8e, .privateChannel-1PZMSo {
+    padding: 2px; /* Adjust padding as needed */
 }
-
-/* Example of reducing font size for channel names */
-.channelName-3V6Qzi, .channelTopic-1swRGA {
-    font-size: 12px; /* Adjust as needed */
-}
-
-/* Example of reducing font size for channel categories */
-.containerDefault-7RImuF .title-1pmpPr {
-    font-size: 12px; /* Adjust as needed */
-}
-
-/* Example of reducing font size for server names */
-.guildName-1fMa6Z {
-    font-size: 14px; /* Adjust as needed */
-}
-
-/* Example of reducing font size for user names in member list */
-.member-3W1lQa {
-    font-size: 12px; /* Adjust as needed */
+.avatar-1BDn8e img, .privateChannel-1PZMSo img {
+    width: 20px; /* Adjust avatar size as needed */
+    height: 20px; /* Adjust avatar size as needed */
+    border-radius: 50%;
 }
