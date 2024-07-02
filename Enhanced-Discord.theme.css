@@ -17,8 +17,6 @@
  @import url(https://raw.githubusercontent.com/mwittrien/BetterDiscordAddons/master/Themes/SettingsModal/SettingsModal.theme.css);
  @import url(https://raw.githubusercontent.com/mwittrien/BetterDiscordAddons/master/Themes/DiscordRecolor/DiscordRecolor.theme.css);
 
- @import url(https://discord-extensions.github.io/bubble-bar/src/source.css);
-
  @import url(https://maendisease.github.io/BetterDiscordStuff/Themes/Float/addon/RemoveMinimumSize.css) (width: 940px); /* Warning to Remove Minimum Size */
  @import url(https://maendisease.github.io/BetterDiscordStuff/Themes/Float/Float.css) (max-width: 940px);
 
@@ -41,37 +39,36 @@
 /*		 Custom CSS from midnight-discord		*/
 
 /* list hover animations */
-.wrapper__612a5 .link_ddbb36 /* channels */,
-.container_a48b21 /* members */,
-.channel__0aef5 /* dms */,
-.side_b4b3f6 .item__48dda /* settings */ {
+.wrapper_d8bfb3 .link_d8bfb3 /* channels */,
+.container_e9f61e /* members */,
+.channel_c91bad /* dms */,
+.side_a0 .item_a0 /* settings */ {
 	transition: margin-left var(--list-item-transition);
 }
-.wrapper__612a5:hover .link_ddbb36,
-.side_b4b3f6 .item__48dda:hover {
+.wrapper_d8bfb3:hover .link_d8bfb3,
+.side_a0 .item_a0:hover {
 	margin-left: 10px;
 }
-.container_a48b21:hover,
-.channel__0aef5:hover {
+.container_e9f61e:hover,
+.channel_c91bad:hover {
 	margin-left: 18px;
 }
 
 /* spin hover animations */
-button.button_ae40a4 /* make user panel buttons round */ {
+button.button_f67531 /* make user panel buttons round */ {
 	border-radius: 50%;
 }
-.button_ae40a4:last-child .contents__322f4 /* settings button */, 
-.attachButton__56f98 .attachButtonInner__84c26 /* upload button */,
-.emojiButton_b63c38 .contents__322f4 /* emoji button */,
-.closeButton__8177f /* settings exit button */,
-.contents__322f4 > .closeIcon__16020 /* modal close */ {
+.attachButton_f298d4 .attachButtonInner_f298d4 /* upload button */,
+.emojiButton_d0696b .contents_dd4f85 /* emoji button */,
+.closeButton_df5532 /* settings exit button */,
+.contents_dd4f85 > .closeIcon_f9a4c9 /* modal close */ {
 	transition: transform var(--icon-spin-transition);
 }
-.button_ae40a4:last-child:hover .contents__322f4,
-.attachButton__56f98:hover .attachButtonInner__84c26,
-.emojiButton_b63c38:hover .contents__322f4,
-.closeButton__8177f:hover,
-.contents__322f4:hover > .closeIcon__16020 {
+.button_f67531:last-child:hover .contents_dd4f85,
+.attachButton_f298d4:hover .attachButtonInner_f298d4,
+.emojiButton_d0696b:hover .contents_dd4f85,
+.closeButton_df5532:hover,
+.contents_dd4f85:hover > .closeIcon_f9a4c9 {
 	transform: rotate(360deg);
 }
 
@@ -83,8 +80,8 @@ button.button_ae40a4 /* make user panel buttons round */ {
 
 /* fix padding */
 #vc-spotify-player /* vencord spotify */,
-.container_e1958d /* vc panel */,
-.panel_bd8c76 /* stream panel */ {
+.container_adcaac /* vc panel */,
+.panel_bf1a22 /* stream panel */ {
 	padding: 10px;
 }
 
