@@ -39,36 +39,36 @@
 /*		 Custom CSS from midnight-discord		*/
 
 /* list hover animations */
-.wrapper_d8bfb3 .link_d8bfb3 /* channels */,
-.container_e9f61e /* members */,
-.channel_c91bad /* dms */,
-.side_a0 .item_a0 /* settings */ {
+.wrapper__2ea32 .link__2ea32 /* channels */,
+.container__91a9d /* members */,
+.channel__972a0 /* dms */,
+.side_b3f026 .item_b3f026 /* settings */ {
 	transition: margin-left var(--list-item-transition);
 }
-.wrapper_d8bfb3:hover .link_d8bfb3,
-.side_a0 .item_a0:hover {
+.wrapper__2ea32:hover .link__2ea32,
+.side_b3f026 .item_b3f026:hover {
 	margin-left: 10px;
 }
-.container_e9f61e:hover,
-.channel_c91bad:hover {
+.container__91a9d:hover,
+.channel__972a0:hover {
 	margin-left: 18px;
 }
 
 /* spin hover animations */
-button.button_f67531 /* make user panel buttons round */ {
+button.button__67645 /* make user panel buttons round */ {
 	border-radius: 50%;
 }
-.attachButton_f298d4 .attachButtonInner_f298d4 /* upload button */,
-.emojiButton_d0696b .contents_dd4f85 /* emoji button */,
-.closeButton_df5532 /* settings exit button */,
-.contents_dd4f85 > .closeIcon_f9a4c9 /* modal close */ {
+.attachButton__0923f .attachButtonInner__0923f /* upload button */,
+.emojiButton_d0696b .contents__201d5 /* emoji button */,
+.closeButton_c2b141 /* settings exit button */,
+.contents__201d5 > .closeIcon__49fc1 /* modal close */ {
 	transition: transform var(--icon-spin-transition);
 }
-.button_f67531:last-child:hover .contents_dd4f85,
-.attachButton_f298d4:hover .attachButtonInner_f298d4,
-.emojiButton_d0696b:hover .contents_dd4f85,
-.closeButton_df5532:hover,
-.contents_dd4f85:hover > .closeIcon_f9a4c9 {
+.button__67645:last-child:hover .contents__201d5,
+.attachButton__0923f:hover .attachButtonInner__0923f,
+.emojiButton_d0696b:hover .contents__201d5,
+.closeButton_c2b141:hover,
+.contents__201d5:hover > .closeIcon__49fc1 {
 	transform: rotate(360deg);
 }
 
@@ -80,13 +80,7 @@ button.button_f67531 /* make user panel buttons round */ {
 
 /* fix padding */
 #vc-spotify-player /* vencord spotify */,
-.container_adcaac /* vc panel */,
-.panel_bf1a22 /* stream panel */ {
+.container_e131a9 /* vc panel */,
+.panel__5dec7 /* stream panel */ {
 	padding: 10px;
 }
-
-
-
-/*		Custom CSS fixes etc.		*/
-
-/* SOON */
