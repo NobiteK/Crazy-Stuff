@@ -44,9 +44,9 @@ Automatically sends a predefined message at regular intervals. Useful for chat a
 Made for CS2 - rapidly spams the 'E' key while holding mouse button 4 (side button) for spam opening doors.
 
 **Controls:**
-- `PgUp` - Toggle script ON/OFF
+- `\` - Toggle script ON/OFF
 - `Mouse 4` - Hold to spam
-- `End` - Close script
+- `Home` - Close script
 
 ---
 
