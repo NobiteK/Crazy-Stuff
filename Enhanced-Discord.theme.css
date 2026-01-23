@@ -2,7 +2,7 @@
  * @name         Enhanced Discord ☁️
  * @author       NobiteK
  * @description  Enhanced Discord Theme ⛅
- * @version      3.0
+ * @version      6.7
  * @invite       ZSCFu2J
  * @authorId     430436408386125824
 */
@@ -14,7 +14,6 @@
 
  @import url(https://raw.githubusercontent.com/mwittrien/BetterDiscordAddons/master/Themes/_res/SupporterBadge.css);
  @import url(https://mwittrien.github.io/BetterDiscordAddons/Themes/EmojiReplace/base/Apple.css);
- /* @import url(https://raw.githubusercontent.com/mwittrien/BetterDiscordAddons/master/Themes/SettingsModal/SettingsModal.theme.css); */
  /* @import url(https://raw.githubusercontent.com/mwittrien/BetterDiscordAddons/master/Themes/DiscordRecolor/DiscordRecolor.theme.css); */
 
  @import url(https://maendisease.github.io/BetterDiscordStuff/Themes/Float/addon/RemoveMinimumSize.css) (width: 940px); /* Warning to Remove Minimum Size */
@@ -43,18 +42,18 @@
 	}
 
 /* list hover animations */
-        .wrapper__2ea32 .link__2ea32 /* channels */,
+    .wrapper__2ea32 .link__2ea32 /* channels */,
         .container__91a9d /* members */,
         .channel__972a0 /* dms */,
-        .side_b3f026 .item_b3f026 /* settings */ {
-            transition: margin-left var(--list-item-transition);
-            will-change: margin-left;
-        }
-        .wrapper__2ea32:hover .link__2ea32,
-        .side_b3f026 .item_b3f026:hover {
-            margin-left: 10px;
-        }
-        .container__91a9d:hover,
-        .channel__972a0:hover {
-            margin-left: 18px;
-        }
+        .side_aa8da2 .item_aa8da2 /* settings */ {
+        transition: margin-left var(--list-item-transition);
+        will-change: margin-left;
+    }
+    .wrapper__2ea32:hover .link__2ea32,
+    .side_aa8da2 .item_aa8da2:hover {
+        margin-left: 10px;
+    }
+    .container__91a9d:hover,
+    .channel__972a0:hover {
+        margin-left: 18px;
+    }
