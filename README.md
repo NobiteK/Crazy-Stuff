@@ -6,12 +6,8 @@ All scripts created and maintained by me for personal use and learning purposes.
 
 ---
 
-### 🎯 AntiAFK
-Prevents AFK kicks by simulating realistic player movement with random WASD inputs, jumps, crouches, and number key presses.
-
-**Controls:**
-- `PgUp` - Toggle ON/OFF
-- `End` - Close script
+### ⏰ Shutdown Timer GUI
+Simple GUI for scheduling Windows system shutdowns.
 
 ---
 
@@ -24,6 +20,37 @@ High-performance auto-clicker with GUI, customizable speed (1ms minimum), and ra
 - `End` - Close script
 
 **Features:** Multi-monitor support, visual indicator, speed presets
+
+---
+
+### 🎯 TriggerBot
+Pixel-based triggerbot that automatically shoots when detecting color changes at crosshair position.
+
+**Controls:**
+- `LAlt` - Hold to activate
+- `PgUp` - Toggle script ON/OFF
+- `End` - Close script
+
+**Features:** 80-200ms random shot delay, 15px color threshold
+
+---
+
+### 🚪 DoorSpam
+Made for CS2 - rapidly spams the 'E' key while holding mouse button 4 (side button) for spam opening doors.
+
+**Controls:**
+- `\` - Toggle script ON/OFF
+- `Mouse 4` - Hold to spam
+- `Home` - Close script
+
+---
+
+### 🎯 AntiAFK
+Prevents AFK kicks by simulating realistic player movement with random WASD inputs, jumps, crouches, and number key presses.
+
+**Controls:**
+- `PgUp` - Toggle ON/OFF
+- `End` - Close script
 
 ---
 
@@ -40,32 +67,8 @@ Automatically sends a predefined message at regular intervals. Useful for chat a
 
 ---
 
-### 🚪 DoorSpam
-Made for CS2 - rapidly spams the 'E' key while holding mouse button 4 (side button) for spam opening doors.
-
-**Controls:**
-- `\` - Toggle script ON/OFF
-- `Mouse 4` - Hold to spam
-- `Home` - Close script
-
----
-
-### 🎯 TriggerBot
-Pixel-based trigger bot that automatically shoots when detecting color changes at crosshair position.
-
-**Controls:**
-- `LAlt` - Hold to activate
-- `PgUp` - Toggle script ON/OFF
-- `End` - Close script
-
-**Features:** 80-200ms random shot delay, 15px color threshold
-
----
-
-### ⏰ Shutdown Timer GUI
-Simple GUI for scheduling Windows system shutdowns.
-
----
+<br>
+<br>
 
 ## 🎨 Extras
 
@@ -73,8 +76,6 @@ Simple GUI for scheduling Windows system shutdowns.
 Custom Discord theme combining multiple popular themes with animations and visual enhancements.
 
 **Features:** Settings icons, hover animations, custom modal sizing, Apple emoji replacement
-
----
 
 ## ⚠️ Disclaimer
 These scripts are for educational purposes. Use responsibly and in accordance with game/software terms of service.
