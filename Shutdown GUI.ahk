@@ -3,25 +3,23 @@
 SendMode Input
 SetWorkingDir %A_ScriptDir%
 
-Gui, Color, 0xF3F3F3, 0xF3F3F3
 Gui, Font, cBlack s9, MS Shell Dlg
-Gui, Add, Text, x20 y20 w260 h30 Center cBlack, Set shutdown time (in seconds):
-Gui, Add, Edit, vShutdownTime x20 y60 w260 h24 +E0x200 -E0x1 +Number
+Gui, Add, Text, x20 y20 w260 h30 Center, Set shutdown time (in seconds):
+Gui, Add, Edit, vShutdownTime x20 y60 w260 h24 +Number
 
-Gui, Add, Text, x20 y100 cBlack, Examples:
-Gui, Add, Text, x20 y120 cBlack, 1h  = 3600
-Gui, Add, Text, x20 y140 cBlack, 2h  = 7200
-Gui, Add, Text, x20 y160 cBlack, 3h  = 10800
-Gui, Add, Text, x20 y180 cBlack, 5h  = 18000
+Gui, Add, Text, x20 y100, Examples:
+Gui, Add, Text, x20 y120, 1h  = 3600
+Gui, Add, Text, x20 y140, 2h  = 7200
+Gui, Add, Text, x20 y160, 3h  = 10800
+Gui, Add, Text, x20 y180, 5h  = 18000
 
-Gui, Add, Button, x100 y210 w100 h30 gSetShutdown +0x1, OK
+Gui, Add, Button, x45 y210 w100 h30 gSetShutdown +Default, OK
+Gui, Add, Button, x155 y210 w100 h30 gAbortShutdown, Abort
 
-DllCall("UxTheme.dll\SetWindowTheme", "Ptr", WinExist(), "Str", "DarkMode_Explorer", "Ptr", 0)
+Gui, Font, cGray s7
+Gui, Add, Text, x20 y255 w272 h16 Right, Made by NobiteK
 
-Gui, Font, cGray s7, MS Shell Dlg
-Gui, Add, Text, x20 y243 w272 h16 Right cGray, Made by NobiteK
-
-Gui, Show, w300 h260, Shutdown Timer
+Gui, Show, w300 h275, Shutdown Timer
 return
 
 SetShutdown:
@@ -31,14 +29,20 @@ SetShutdown:
         MsgBox, 48, Error, You must enter time in seconds!
         return
     }
-    if ShutdownTime is not integer
-    {
-        MsgBox, 48, Error, Please enter a whole number (seconds)!
-        return
-    }
-    Run, shutdown -s -t %ShutdownTime%
+    RunWait, shutdown -s -t %ShutdownTime%, , Hide
     MsgBox, 64, Set Successfully, Computer will shutdown in %ShutdownTime% seconds.
-    ExitApp
+return
+
+AbortShutdown:
+    RunWait, shutdown -a, , Hide UseErrorLevel
+    if (ErrorLevel != 0)
+    {
+        MsgBox, 48, Error, No scheduled shutdown found!
+    }
+    else
+    {
+        MsgBox, 64, Cancelled, Scheduled shutdown has been cancelled.
+    }
 return
 
 GuiClose:
