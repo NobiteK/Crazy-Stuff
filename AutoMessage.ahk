@@ -1,11 +1,12 @@
-﻿/*
+/*
     Controls:
     = or F1 - Toggle ON/OFF
     End - Close Script
 */
 
-TEXT_TO_PASTE := "hello" ;      ; Text to be auto-pasted
-INTERVAL := 15000               ; Interval in milliseconds (15000 ms = 15 seconds)
+TEXT_TO_PASTE := "e" ;       ; Text to be auto-pasted
+INTERVAL := 50               ; Interval in milliseconds (15000 ms = 15 seconds)
+PRESS_ENTER := false         ; Whether to press Enter after pasting
 
 #SingleInstance Force
 #NoEnv
@@ -13,6 +14,7 @@ SetWorkingDir %A_ScriptDir%
 
 Menu, Tray, NoStandard 
 Menu, Tray, Add, Toggle AutoPaste, ToggleScript
+Menu, Tray, Add, Toggle Enter, ToggleEnter
 Menu, Tray, Add, Exit, ExitScript
 Menu, Tray, Tip, AutoPaste [OFF]
 Menu, Tray, Icon, % A_WinDir "\System32\shell32.dll", 132
@@ -26,10 +28,9 @@ if (enabled) {
     Menu, Tray, Icon, % A_WinDir "\System32\shell32.dll", 145
     Menu, Tray, Tip, AutoPaste [ON]
     SoundBeep, 1000, 150
-    tmp := clipboard
-    Clipboard := TEXT_TO_PASTE
-    SendInput ^v{Enter}
-    Clipboard := tmp
+    SendInput, %TEXT_TO_PASTE%
+    if (PRESS_ENTER)
+        SendInput {Enter}
     SetTimer, RePaste, %INTERVAL%
 } else {
     Menu, Tray, Icon, % A_WinDir "\System32\shell32.dll", 132
@@ -42,10 +43,9 @@ return
 RePaste:
 if (!enabled)
     return
-tmp := clipboard
-Clipboard := TEXT_TO_PASTE
-SendInput ^v{Enter}
-Clipboard := tmp
+SendInput, %TEXT_TO_PASTE%
+if (PRESS_ENTER)
+    SendInput {Enter}
 return
 
 F1::
@@ -62,6 +62,10 @@ return
 
 ToggleScript:
 GoSub, =
+return
+
+ToggleEnter:
+PRESS_ENTER := !PRESS_ENTER
 return
 
 ExitScript:
