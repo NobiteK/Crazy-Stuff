@@ -36,9 +36,10 @@ Gui, +MinimizeBox +OwnDialogs
 yPos := margin
 
 Gui, Add, Text, cWhite x%margin% y%yPos%, Speed (ms):
+Gui, Add, Text, vRndLabel cGreen x120 y%yPos% Hidden, [RND: ON]
 yPos += 24
 Gui, Add, Edit, vClickDelay w160 cBlack Background0x2D2D30 Number x40 y%yPos% hwndhEdit gUpdateDelay, 1
-Gui, Add, Button, vRandomBtn x205 y%yPos% w35 h24 gClickRandom cWhite Background0x404040, RND
+Gui, Add, Button, vRandomBtn x205 y%yPos% w35 h24 gClickRandom, RND
 
 SendMessage, 0x1501, 1, "Minimum: 1 ms",, ahk_id %hEdit%
 yPos += gap + 24
@@ -51,7 +52,7 @@ GuiControl, ChooseString, MouseButtonChoice, %mouseButton%
 yPos += gap + 24
 Gui, Add, Text, cWhite x%margin% y%yPos%, Toggle key:
 yPos += 24
-Gui, Add, Button, vHotkeyBtn gSetHotkey w200 cWhite Background0x3A3A3C +0x4000 x%margin% y%yPos%, %hotkeyToggle%
+Gui, Add, Button, vHotkeyBtn gSetHotkey w200 +0x4000 x%margin% y%yPos%, %hotkeyToggle%
 Gui, Add, Progress, vIndicatorBar x8 y8 w12 h12 Background23272E -Border
 
 Gui, Font, cGray s7, MS Shell Dlg
@@ -131,10 +132,10 @@ ClickRandom:
     if (randomEnabled) {
         GuiControl,, ClickDelay,
         SendMessage, 0x1501, 1, "Random offset ON",, ahk_id %hEdit%
-        GuiControl, +Background0x0078D4, RandomBtn
+        GuiControl, Show, RndLabel
     } else {
         SendMessage, 0x1501, 1, "Minimum: 1 ms",, ahk_id %hEdit%
-        GuiControl, +Background0x404040, RandomBtn
+        GuiControl, Hide, RndLabel
     }
 return
 
