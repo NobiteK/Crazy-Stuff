@@ -62,8 +62,9 @@ Automatically sends a predefined message at regular intervals. Useful for chat a
 - `End` - Close script
 
 **Configuration:**
-- `TEXT_TO_PASTE` - Message to send
-- `INTERVAL` - Delay between messages (default: 15s)
+- `TEXT_TO_PASTE` - Text to be auto-pasted
+- `INTERVAL` - Delay between messages
+- `PRESS_ENTER` - Whether to press Enter after pasting
 
 ---
 
