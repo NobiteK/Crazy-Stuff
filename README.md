@@ -6,11 +6,6 @@ All scripts created and maintained by me for personal use and learning purposes.
 
 ---
 
-### ⏰ Shutdown Timer GUI
-Simple GUI for scheduling Windows system shutdowns.
-
----
-
 ### 🖱️ AutoClicker
 High-performance auto-clicker with GUI, customizable speed (1ms minimum), and random delay option. Supports left, right, and middle mouse buttons.
 
@@ -19,19 +14,15 @@ High-performance auto-clicker with GUI, customizable speed (1ms minimum), and ra
 - `Insert` - Alternative toggle
 - `End` - Close script
 
-**Features:** Multi-monitor support, visual indicator, speed presets
-
 ---
 
 ### 🎯 TriggerBot
-Pixel-based triggerbot that automatically shoots when detecting color changes at crosshair position.
+Pixel-based triggerbot that automatically shoots when detecting color changes at crosshair position. 80-200ms random shot delay, 15px color threshold.
 
 **Controls:**
 - `LAlt` - Hold to activate
 - `PgUp` - Toggle script ON/OFF
 - `End` - Close script
-
-**Features:** 80-200ms random shot delay, 15px color threshold
 
 ---
 
@@ -68,6 +59,9 @@ Automatically sends a predefined message at regular intervals. Useful for chat a
 
 ---
 
+### ⏰ Shutdown Timer GUI
+Simple GUI for scheduling Windows system shutdowns.
+
 <br>
 <br>
 
@@ -77,6 +71,9 @@ Automatically sends a predefined message at regular intervals. Useful for chat a
 Custom Discord theme combining multiple popular themes with animations and visual enhancements.
 
 **Features:** Settings icons, hover animations, custom modal sizing, Apple emoji replacement
+
+<br>
+<br>
 
 ## ⚠️ Disclaimer
 These scripts are for educational purposes. Use responsibly and in accordance with game/software terms of service.
