@@ -23,16 +23,19 @@ High-performance auto-clicker with GUI, optimized timer precision, customizable 
 
 **My AutoClicker vs OP Auto Clicker**
 
-| Speed | Metric | My AutoClicker | OP Auto Clicker | Improvement |
-|-------|--------|---|---|---|
-| **1ms** | Avg Gap | 4.42ms | 20.93ms | **4.74x faster** ⚡ |
-| | Min Gap | 1ms | 18.9ms | ✅ |
-| **10ms** | Avg Gap | 17.99ms | 31.55ms | **1.75x faster** ⚡ |
-| | Min Gap | 6.4ms | 30ms | ✅ |
-| **100ms** | Avg Gap | 112.78ms | 124.23ms | **1.10x faster** ⚡ |
-| | CPS Avg | 8.87 | 8.05 | **✅ More consistent** |
+| Setting   | Metric              | My AutoClicker       | OP Auto Clicker     | Improvement                       |
+|-----------|---------------------|----------------------|---------------------|-----------------------------------|
+| **1ms**   | **Average Gap**     | **4.42 ms**          | 20.93 ms            | **4.73× faster** ⚡              |
+|           | Minimum Gap         | **1.0 ms**           | 18.9 ms             | **18.9× smaller** ✅             |
+|           | Average CPS         | **226.0 CPS**        | 47.8 CPS            | **4.73× higher** ✅              |
+| **10ms**  | **Average Gap**     | **17.99 ms**         | 31.55 ms            | **1.75× faster** ⚡              |
+|           | Minimum Gap         | **6.4 ms**           | 30.0 ms             | **4.7× smaller** ✅              |
+|           | Average CPS         | **55.6 CPS**         | 31.7 CPS            | **1.75× higher** ✅              |
+| **100ms** | **Average Gap**     | **112.78 ms**        | 124.23 ms           | **1.10× faster** ⚡              |
+|           | Minimum Gap         | **99.3 ms**          | 121.9 ms            | **1.23× smaller** ✅             |
+|           | Average CPS         | **8.87 CPS**         | 8.05 CPS            | **1.10× higher** ✅              |
 
-💡 **My AutoClicker delivers significantly better precision across all speed ranges!**
+💡 **My AutoClicker is significantly faster at low intervals and delivers significantly better precision across all speed ranges!**
 
 ---
 
