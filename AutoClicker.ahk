@@ -4,14 +4,14 @@ SetWorkingDir %A_ScriptDir%
 DllCall("timeBeginPeriod", UInt, 1)
 
 ; --- Defaults ---
-clickDelay := 1
+clickDelay := ""
 mouseButton := "Left Mouse"
 enabled := false
 hotkeyToggle := "F"
 
 ; --- State variables ---
 randomEnabled := false
-cachedDelay := 1
+cachedDelay := ""
 cachedButton := "Left"
 lastClick := 0
 
@@ -38,7 +38,7 @@ yPos := margin
 Gui, Add, Text, cWhite x%margin% y%yPos%, Speed (ms):
 Gui, Add, Text, vRndLabel cGreen x120 y%yPos% Hidden, [RND: ON]
 yPos += 24
-Gui, Add, Edit, vClickDelay w160 cBlack Background0x2D2D30 Number x40 y%yPos% hwndhEdit gUpdateDelay, 1
+Gui, Add, Edit, vClickDelay w160 cBlack Background0x2D2D30 Number x40 y%yPos% hwndhEdit gUpdateDelay
 Gui, Add, Button, vRandomBtn x205 y%yPos% w35 h24 gClickRandom, RND
 
 SendMessage, 0x1501, 1, "Minimum: 1 ms",, ahk_id %hEdit%
@@ -94,8 +94,6 @@ return
 
 UpdateDelay:
     GuiControlGet, cachedDelay,, ClickDelay
-    if (cachedDelay < 1)
-        cachedDelay := 1
 return
 
 UpdateButton:
@@ -130,9 +128,10 @@ ClickRandom:
     }
     
     if (randomEnabled) {
-        GuiControl,, ClickDelay,
-        SendMessage, 0x1501, 1, "Random offset ON",, ahk_id %hEdit%
+        SendMessage, 0x1501, 1, "Minimum: 10 ms",, ahk_id %hEdit%
         GuiControl, Show, RndLabel
+        GuiControl,, ClickDelay,
+        cachedDelay := ""
     } else {
         SendMessage, 0x1501, 1, "Minimum: 1 ms",, ahk_id %hEdit%
         GuiControl, Hide, RndLabel
@@ -157,6 +156,17 @@ ToggleScript:
         Gosub, UpdateDelay
         Gosub, UpdateButton
         
+        if (cachedDelay = "" || !RegExMatch(cachedDelay, "^\d+$") || cachedDelay < 1) {
+            MsgBox, Wpisz prawidłowy delay (liczba >= 1 ms)!
+            enabled := false
+            return
+        }
+        if (randomEnabled && cachedDelay < 10) {
+            MsgBox, Przy włączonym RND minimum 10 ms!
+            enabled := false
+            return
+        }
+        
         Menu, Tray, Icon, % A_WinDir "\System32\shell32.dll", 145
         Menu, Tray, Tip, AutoClicker [ON]
         SoundBeep, 1000, 150
@@ -167,10 +177,8 @@ ToggleScript:
 
         if (cachedDelay = 1) {
             SetTimer, MaxSpeedClick, -1
-        } else if (cachedDelay <= 10) {
-            SetTimer, FastClick, 1
         } else {
-            SetTimer, NormalClick, %cachedDelay%
+            SetTimer, PreciseClick, %cachedDelay%
         }
     } else {
         Menu, Tray, Icon, % A_WinDir "\System32\shell32.dll", 132
@@ -179,8 +187,7 @@ ToggleScript:
         GuiControl,, IndicatorBar, 100
         GuiControl, +cB00000, IndicatorBar
         SetTimer, MaxSpeedClick, Off
-        SetTimer, FastClick, Off
-        SetTimer, NormalClick, Off
+        SetTimer, PreciseClick, Off
     }
 return
 
@@ -208,11 +215,7 @@ MaxSpeedClick:
         SetTimer, MaxSpeedClick, -1
 return
 
-FastClick:
-    currentTime := A_TickCount
-    if (currentTime - lastClick < cachedDelay)
-        return
-
+PreciseClick:
     if (cachedButton = "Right") {
         DllCall("mouse_event", "UInt", 0x08, "Int", 0, "Int", 0, "UInt", 0, "UPtr", 0)
         DllCall("mouse_event", "UInt", 0x10, "Int", 0, "Int", 0, "UInt", 0, "UPtr", 0)
@@ -224,26 +227,10 @@ FastClick:
         DllCall("mouse_event", "UInt", 0x04, "Int", 0, "Int", 0, "UInt", 0, "UPtr", 0)
     }
 
-    lastClick := currentTime
-
-    if (randomEnabled && cachedDelay > 1) {
-        Random, randomDelay, 1, %cachedDelay%
-        DllCall("Sleep", "UInt", randomDelay)
-    }
-return
-
-NormalClick:
-    if (cachedButton = "Right") {
-        Click, Right
-    } else if (cachedButton = "Middle") {
-        Click, Middle
-    } else {
-        Click, Left
-    }
-
     if (randomEnabled) {
-        Random, randomDelay, 1, %cachedDelay%
-        Sleep, %randomDelay%
+        min_delay := max(10, cachedDelay - 70)
+        Random, randomDelay, %min_delay%, %cachedDelay%
+        DllCall("Sleep", "UInt", randomDelay)
     }
 return
 
