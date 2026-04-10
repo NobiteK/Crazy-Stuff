@@ -4,18 +4,13 @@ A collection of utility scripts for gaming and automation built with AutoHotkey.
 
 All scripts created and maintained by me for personal use and learning purposes.
 
+**⚠️ Disclaimer:** These scripts are for educational purposes. Use responsibly and in accordance with game/software terms of service.
+
 ---
 
 ## 🖱️ AutoClicker
 
-High-performance auto-clicker with GUI, optimized timer precision, customizable speed (1ms minimum), and random delay option. Supports left, right, and middle mouse buttons.
-
-### Features
-- ⚡ 1ms spin-loop mode (maximum speed)
-- 🎯 SetTimer-based clicking for accurate delays (2ms+)
-- 🎲 Random delay option to avoid detection
-- 🖱️ Supports Left, Right, and Middle mouse buttons
-- 🟢 Real-time indicator (green = ON, red = OFF)
+High-performance auto-clicker with GUI, optimized timer precision, customizable speed, and random delay option. Supports left, right, and middle mouse buttons.
 
 ### Controls
 | Key | Action |
@@ -99,13 +94,5 @@ Automatically sends a predefined message at regular intervals. Useful for chat a
 ## ⏰ Shutdown Timer GUI
 
 Simple GUI for scheduling Windows system shutdowns.
-
----
-
-<br>
-
-## ⚠️ Disclaimer
-
-These scripts are for educational purposes. Use responsibly and in accordance with game/software terms of service.
 
 <img align="center" src="https://raw.githubusercontent.com/NobiteK/NobiteK/main/banner.png" />
