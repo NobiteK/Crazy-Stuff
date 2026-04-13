@@ -52,6 +52,18 @@ Pixel-based triggerbot that automatically shoots when detecting color changes at
 
 ---
 
+## 💬 AutoMessage
+
+Automatically sends a customizable message at customizable intervals with always-on-top GUI with customizable hotkey, and optional Enter key press after each message option.
+
+### Controls
+| Key | Action |
+|-----|--------|
+| `=` or `F1` | Toggle ON/OFF |
+| `End` | Close script |
+
+---
+
 ## 🚪 DoorSpam
 
 Made for CS2 - rapidly spams the 'E' key while holding mouse button 4 (side button) for spam opening doors.
@@ -74,23 +86,6 @@ Prevents AFK kicks by simulating realistic player movement with random WASD inpu
 |-----|--------|
 | `PgUp` | Toggle ON/OFF |
 | `End` | Close script |
-
----
-
-## 💬 AutoMessage
-
-Automatically sends a predefined message at regular intervals. Useful for chat automation.
-
-### Controls
-| Key | Action |
-|-----|--------|
-| `=` or `F1` | Toggle ON/OFF |
-| `End` | Close script |
-
-### Configuration
-- `TEXT_TO_PASTE` - Text to be auto-pasted
-- `INTERVAL` - Delay between messages
-- `PRESS_ENTER` - Whether to press Enter after pasting
 
 ---
 
