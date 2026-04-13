@@ -1,3 +1,9 @@
+/*
+    Controls:
+    F or Insert - Toggle ON/OFF
+    End         - Close Script
+*/
+
 #SingleInstance Force
 #NoEnv
 SetWorkingDir %A_ScriptDir%
