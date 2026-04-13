@@ -157,12 +157,12 @@ ToggleScript:
         Gosub, UpdateButton
         
         if (cachedDelay = "" || !RegExMatch(cachedDelay, "^\d+$") || cachedDelay < 1) {
-            MsgBox, Wpisz prawidłowy delay (liczba >= 1 ms)!
+            MsgBox, Please enter a valid delay in milliseconds (minimum delay is 1 ms)!
             enabled := false
             return
         }
         if (randomEnabled && cachedDelay < 10) {
-            MsgBox, Przy włączonym RND minimum 10 ms!
+            MsgBox, With RND mode enabled, minimum delay is 10 ms!
             enabled := false
             return
         }
@@ -196,14 +196,14 @@ MaxSpeedClick:
         if (!enabled)
             break
         if (cachedButton = "Right") {
-            DllCall("mouse_event", "UInt", 0x08, "Int", 0, "Int", 0, "UInt", 0, "UPtr", 0) ; Right down
-            DllCall("mouse_event", "UInt", 0x10, "Int", 0, "Int", 0, "UInt", 0, "UPtr", 0) ; Right up
+            DllCall("mouse_event", "UInt", 0x08, "Int", 0, "Int", 0, "UInt", 0, "UPtr", 0)
+            DllCall("mouse_event", "UInt", 0x10, "Int", 0, "Int", 0, "UInt", 0, "UPtr", 0)
         } else if (cachedButton = "Middle") {
-            DllCall("mouse_event", "UInt", 0x20, "Int", 0, "Int", 0, "UInt", 0, "UPtr", 0) ; Middle down
-            DllCall("mouse_event", "UInt", 0x40, "Int", 0, "Int", 0, "UInt", 0, "UPtr", 0) ; Middle up
+            DllCall("mouse_event", "UInt", 0x20, "Int", 0, "Int", 0, "UInt", 0, "UPtr", 0)
+            DllCall("mouse_event", "UInt", 0x40, "Int", 0, "Int", 0, "UInt", 0, "UPtr", 0)
         } else {
-            DllCall("mouse_event", "UInt", 0x02, "Int", 0, "Int", 0, "UInt", 0, "UPtr", 0) ; Left down
-            DllCall("mouse_event", "UInt", 0x04, "Int", 0, "Int", 0, "UInt", 0, "UPtr", 0) ; Left up
+            DllCall("mouse_event", "UInt", 0x02, "Int", 0, "Int", 0, "UInt", 0, "UPtr", 0)
+            DllCall("mouse_event", "UInt", 0x04, "Int", 0, "Int", 0, "UInt", 0, "UPtr", 0)
         }
         DllCall("Sleep", "UInt", 1)
 
