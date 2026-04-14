@@ -19,7 +19,8 @@ hotkeyToggle := "F"
 randomEnabled := false
 cachedDelay := ""
 cachedButton := "Left"
-lastClick := 0
+holdEnabled := false
+currentHoldHotkey := ""
 
 ; --- Tray ---
 Menu, Tray, NoStandard
@@ -41,24 +42,30 @@ Gui, +MinimizeBox +OwnDialogs
 
 yPos := margin
 
+; Speed + RND
 Gui, Add, Text, cWhite x%margin% y%yPos%, Speed (ms):
 Gui, Add, Text, vRndLabel cGreen x120 y%yPos% Hidden, [RND: ON]
 yPos += 24
-Gui, Add, Edit, vClickDelay w160 cBlack Background0x2D2D30 Number x40 y%yPos% hwndhEdit gUpdateDelay
-Gui, Add, Button, vRandomBtn x205 y%yPos% w35 h24 gClickRandom, RND
+Gui, Add, Edit, vClickDelay w147 cBlack Background0x2D2D30 Number x40 y%yPos% hwndhEdit gUpdateDelay
+Gui, Add, Button, vRandomBtn x193 y%yPos% w48 h24 gClickRandom, RND
 
 SendMessage, 0x1501, 1, "Minimum: 1 ms",, ahk_id %hEdit%
 yPos += gap + 24
 
+; Button + HOLD
 Gui, Add, Text, cWhite x%margin% y%yPos%, Button:
+Gui, Add, Text, vHoldLabel cGreen x90 y%yPos% Hidden, [HOLD: ON]
 yPos += 24
-Gui, Add, DropDownList, vMouseButtonChoice w200 cWhite Background0x2D2D30 x%margin% y%yPos% gUpdateButton, Left Mouse|Right Mouse|Middle Mouse
+Gui, Add, DropDownList, vMouseButtonChoice w147 cWhite Background0x2D2D30 x%margin% y%yPos% gUpdateButton, Left Mouse|Right Mouse|Middle Mouse
 GuiControl, ChooseString, MouseButtonChoice, %mouseButton%
+Gui, Add, Button, vHoldBtn x193 y%yPos% w48 h24 gClickHold, HOLD
 
 yPos += gap + 24
+
+; Toggle key
 Gui, Add, Text, cWhite x%margin% y%yPos%, Toggle key:
 yPos += 24
-Gui, Add, Button, vHotkeyBtn gSetHotkey w200 +0x4000 x%margin% y%yPos%, %hotkeyToggle%
+Gui, Add, Button, vHotkeyBtn gSetHotkey w201 +0x4000 x%margin% y%yPos%, %hotkeyToggle%
 Gui, Add, Progress, vIndicatorBar x8 y8 w12 h12 Background23272E -Border
 
 Gui, Font, cGray s7, MS Shell Dlg
@@ -69,7 +76,6 @@ winH := yPos + 24 + margin
 
 SysGet, MonitorCount, MonitorCount
 SysGet, Monitor1, Monitor, 1
-
 foundSecondMonitor := false
 Loop, %MonitorCount% {
     SysGet, Mon, Monitor, %A_Index%
@@ -80,11 +86,9 @@ Loop, %MonitorCount% {
         break
     }
 }
-
 if (foundSecondMonitor) {
     Gui, Show, x%xPos% y%yPos% w%winW% h%winH%, AutoClicker
 } else {
-    SysGet, Monitor1, Monitor, 1
     xPos := Monitor1Right - winW - 7
     yPos := Monitor1Top + 5
     Gui, Show, x%xPos% y%yPos% w%winW% h%winH%, AutoClicker
@@ -110,6 +114,15 @@ UpdateButton:
         cachedButton := "Middle"
     } else {
         cachedButton := "Left"
+    }
+    
+    if (holdEnabled && currentHoldHotkey != "") {
+        oldHotkey := currentHoldHotkey
+        currentHoldHotkey := (cachedButton = "Right" ? "RButton" : (cachedButton = "Middle" ? "MButton" : "LButton"))
+        if (oldHotkey != currentHoldHotkey) {
+            Hotkey, ~$*%oldHotkey%, HoldAutoFire, Off
+            Hotkey, ~$*%currentHoldHotkey%, HoldAutoFire, On
+        }
     }
 return
 
@@ -144,9 +157,63 @@ ClickRandom:
     }
 return
 
+ClickHold:
+    if (holdEnabled) {
+        holdEnabled := false
+        GuiControl, Hide, HoldLabel
+        GuiControl, Enable, HotkeyBtn
+        Hotkey, %hotkeyToggle%, ToggleScript, On
+        Hotkey, Insert, ToggleScript, On
+        
+        if (currentHoldHotkey != "") {
+            Hotkey, ~$*%currentHoldHotkey%, HoldAutoFire, Off
+            currentHoldHotkey := ""
+        }
+        
+        Menu, Tray, Icon, % A_WinDir "\System32\shell32.dll", 132
+        Menu, Tray, Tip, AutoClicker [OFF]
+        SoundBeep, 400, 200
+        GuiControl,, IndicatorBar, 100
+        GuiControl, +cB00000, IndicatorBar
+    } 
+    else {
+        Gosub, UpdateDelay
+        
+        if (cachedDelay = "" || !RegExMatch(cachedDelay, "^\d+$") || cachedDelay < 1) {
+            MsgBox, 48, AutoClicker, Please enter a valid delay in milliseconds (minimum 1 ms) to enable HOLD mode!
+            return
+        }
+        if (randomEnabled && cachedDelay < 10) {
+            MsgBox, 48, AutoClicker, With RND mode enabled, minimum delay is 10 ms!
+            return
+        }
+        
+        holdEnabled := true
+        GuiControl, Show, HoldLabel
+        GuiControl, Disable, HotkeyBtn
+        Hotkey, %hotkeyToggle%, ToggleScript, Off
+        Hotkey, Insert, ToggleScript, Off
+        
+        if (enabled) {
+            enabled := false
+            SetTimer, MaxSpeedClick, Off
+            SetTimer, PreciseClick, Off
+        }
+        
+        Menu, Tray, Icon, % A_WinDir "\System32\shell32.dll", 145
+        Menu, Tray, Tip, AutoClicker [HOLD: ON]
+        SoundBeep, 1000, 150
+        GuiControl,, IndicatorBar, 100
+        GuiControl, +c00B000, IndicatorBar
+        
+        currentHoldHotkey := (cachedButton = "Right" ? "RButton" : (cachedButton = "Middle" ? "MButton" : "LButton"))
+        Hotkey, ~$*%currentHoldHotkey%, HoldAutoFire, On
+    }
+return
+
 SetHotkey:
     Gui, +OwnDialogs
-    MsgBox, 64, Set Hotkey, Click OK and press a key to set hotkey
+    MsgBox, 64, Set Hotkey, Click OK and press a key to set hotkey.
     Input, newHotkey, L1 M
     if (ErrorLevel = "Max") {
         Hotkey, %hotkeyToggle%, ToggleScript, Off
@@ -157,18 +224,21 @@ SetHotkey:
 return
 
 ToggleScript:
+    if (holdEnabled) 
+        return
+    
     enabled := !enabled
     if (enabled) {
         Gosub, UpdateDelay
         Gosub, UpdateButton
         
         if (cachedDelay = "" || !RegExMatch(cachedDelay, "^\d+$") || cachedDelay < 1) {
-            MsgBox, Please enter a valid delay in milliseconds (minimum delay is 1 ms)!
+            MsgBox, 48, AutoClicker, Please enter a valid delay in milliseconds (minimum delay is 1 ms)!
             enabled := false
             return
         }
         if (randomEnabled && cachedDelay < 10) {
-            MsgBox, With RND mode enabled, minimum delay is 10 ms!
+            MsgBox, 48, AutoClicker, With RND mode enabled, minimum delay is 10 ms!
             enabled := false
             return
         }
@@ -178,8 +248,6 @@ ToggleScript:
         SoundBeep, 1000, 150
         GuiControl,, IndicatorBar, 100
         GuiControl, +c00B000, IndicatorBar
-
-        lastClick := A_TickCount
 
         if (cachedDelay = 1) {
             SetTimer, MaxSpeedClick, -1
@@ -216,7 +284,6 @@ MaxSpeedClick:
         if (Mod(A_TickCount, 10) = 0)
             Sleep, 0
     }
-
     if (enabled)
         SetTimer, MaxSpeedClick, -1
 return
@@ -237,6 +304,35 @@ PreciseClick:
         min_delay := max(10, cachedDelay - 70)
         Random, randomDelay, %min_delay%, %cachedDelay%
         DllCall("Sleep", "UInt", randomDelay)
+    }
+return
+
+HoldAutoFire:
+    if (!holdEnabled)
+        return
+    while GetKeyState(currentHoldHotkey, "P") {
+        if (cachedButton = "Right") {
+            DllCall("mouse_event", "UInt", 0x08, "Int", 0, "Int", 0, "UInt", 0, "UPtr", 0)
+            DllCall("mouse_event", "UInt", 0x10, "Int", 0, "Int", 0, "UInt", 0, "UPtr", 0)
+        } else if (cachedButton = "Middle") {
+            DllCall("mouse_event", "UInt", 0x20, "Int", 0, "Int", 0, "UInt", 0, "UPtr", 0)
+            DllCall("mouse_event", "UInt", 0x40, "Int", 0, "Int", 0, "UInt", 0, "UPtr", 0)
+        } else {
+            DllCall("mouse_event", "UInt", 0x02, "Int", 0, "Int", 0, "UInt", 0, "UPtr", 0)
+            DllCall("mouse_event", "UInt", 0x04, "Int", 0, "Int", 0, "UInt", 0, "UPtr", 0)
+        }
+
+        if (randomEnabled) {
+            min_delay := max(10, cachedDelay - 70)
+            Random, randomDelay, %min_delay%, %cachedDelay%
+            DllCall("Sleep", "UInt", randomDelay)
+        } else if (cachedDelay = 1) {
+            DllCall("Sleep", "UInt", 1)
+            if (Mod(A_TickCount, 10) = 0)
+                Sleep, 0
+        } else {
+            DllCall("Sleep", "UInt", cachedDelay)
+        }
     }
 return
 
