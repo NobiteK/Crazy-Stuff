@@ -8,14 +8,16 @@
 #NoEnv
 SetWorkingDir %A_ScriptDir%
 
+; --- State ---
+enabled := false
+
+; --- Tray ---
 Menu, Tray, NoStandard
 Menu, Tray, Add, Toggle AntiAFK, ToggleScript
 Menu, Tray, Add, Exit, ExitScript
 Menu, Tray, Tip, AntiAFK [OFF]
 Menu, Tray, Icon, % A_WinDir "\System32\shell32.dll", 132
 Menu, Tray, Default, Toggle AntiAFK
-
-enabled := false
 
 PgUp::
 enabled := !enabled
