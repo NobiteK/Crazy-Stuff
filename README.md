@@ -10,7 +10,7 @@ All scripts created and maintained by me for personal use and learning purposes.
 
 ## 🖱️ AutoClicker
 
-High-performance auto-clicker with GUI, optimized timer precision, customizable speed, and random delay option. Supports left, right, and middle mouse buttons.
+High-performance auto-clicker with GUI, customizable speed, hotkey and mouse button, as well as random delay and mouse hold options.
 
 ### Controls
 | Key | Action |
