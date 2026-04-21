@@ -21,6 +21,8 @@ cachedDelay := ""
 cachedButton := "Left"
 holdEnabled := false
 currentHoldHotkey := ""
+keyboardKey := ""
+settingKeyboardKey := false
 
 ; --- Tray ---
 Menu, Tray, NoStandard
@@ -56,7 +58,7 @@ yPos += gap + 24
 Gui, Add, Text, cWhite x%margin% y%yPos%, Button:
 Gui, Add, Text, vHoldLabel cGreen x90 y%yPos% Hidden, [HOLD: ON]
 yPos += 24
-Gui, Add, DropDownList, vMouseButtonChoice w147 cWhite Background0x2D2D30 x%margin% y%yPos% gUpdateButton, Left Mouse|Right Mouse|Middle Mouse
+Gui, Add, DropDownList, vMouseButtonChoice w147 cWhite Background0x2D2D30 x%margin% y%yPos% gUpdateButton, Left Mouse|Right Mouse|Middle Mouse|Keyboard - "?"
 GuiControl, ChooseString, MouseButtonChoice, %mouseButton%
 Gui, Add, Button, vHoldBtn x193 y%yPos% w48 h24 gClickHold, HOLD
 
@@ -107,23 +109,127 @@ UpdateDelay:
 return
 
 UpdateButton:
+    if (settingKeyboardKey)
+        return
+
     GuiControlGet, selectedButton,, MouseButtonChoice
     if (selectedButton = "Right Mouse") {
         cachedButton := "Right"
+        keyboardKey := ""
     } else if (selectedButton = "Middle Mouse") {
         cachedButton := "Middle"
-    } else {
+        keyboardKey := ""
+    } else if (selectedButton = "Left Mouse") {
         cachedButton := "Left"
+        keyboardKey := ""
+    } else if (InStr(selectedButton, "Keyboard")) {
+        Gosub, SetKeyboardButton
     }
-    
+
     if (holdEnabled && currentHoldHotkey != "") {
         oldHotkey := currentHoldHotkey
-        currentHoldHotkey := (cachedButton = "Right" ? "RButton" : (cachedButton = "Middle" ? "MButton" : "LButton"))
+        if (keyboardKey != "") {
+            currentHoldHotkey := keyboardKey
+        } else {
+            currentHoldHotkey := (cachedButton = "Right" ? "RButton" : (cachedButton = "Middle" ? "MButton" : "LButton"))
+        }
         if (oldHotkey != currentHoldHotkey) {
             Hotkey, ~$*%oldHotkey%, HoldAutoFire, Off
             Hotkey, ~$*%currentHoldHotkey%, HoldAutoFire, On
         }
     }
+return
+
+SetKeyboardButton:
+    Gui, +OwnDialogs
+    MsgBox, 64, Set Button, Click OK and press a key to set button.
+
+    settingKeyboardKey := true
+
+    Input, newKey, L1 T5, {LControl}{RControl}{LShift}{RShift}{LAlt}{RAlt}{LWin}{RWin}{Space}{Enter}{Tab}{Backspace}{Delete}{Insert}{Home}{End}{PgUp}{PgDn}{Up}{Down}{Left}{Right}{F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}
+
+    capturedKey := ""
+    sendKey := ""
+
+    if (ErrorLevel = "EndKey:LControl" || ErrorLevel = "EndKey:RControl") {
+        capturedKey := "Ctrl",  sendKey := "Ctrl"
+    } else if (ErrorLevel = "EndKey:LShift" || ErrorLevel = "EndKey:RShift") {
+        capturedKey := "Shift", sendKey := "Shift"
+    } else if (ErrorLevel = "EndKey:LAlt" || ErrorLevel = "EndKey:RAlt") {
+        capturedKey := "Alt",   sendKey := "Alt"
+    } else if (ErrorLevel = "EndKey:LWin" || ErrorLevel = "EndKey:RWin") {
+        capturedKey := "Win",   sendKey := "LWin"
+    } else if (ErrorLevel = "EndKey:Space") {
+        capturedKey := "Space", sendKey := "Space"
+    } else if (ErrorLevel = "EndKey:Enter") {
+        capturedKey := "Enter", sendKey := "Enter"
+    } else if (ErrorLevel = "EndKey:Tab") {
+        capturedKey := "Tab",   sendKey := "Tab"
+    } else if (ErrorLevel = "EndKey:Backspace") {
+        capturedKey := "Backspace", sendKey := "Backspace"
+    } else if (ErrorLevel = "EndKey:Delete") {
+        capturedKey := "Delete", sendKey := "Delete"
+    } else if (ErrorLevel = "EndKey:Insert") {
+        capturedKey := "Insert", sendKey := "Insert"
+    } else if (ErrorLevel = "EndKey:Home") {
+        capturedKey := "Home",  sendKey := "Home"
+    } else if (ErrorLevel = "EndKey:End") {
+        capturedKey := "End",   sendKey := "End"
+    } else if (ErrorLevel = "EndKey:PgUp") {
+        capturedKey := "PgUp",  sendKey := "PgUp"
+    } else if (ErrorLevel = "EndKey:PgDn") {
+        capturedKey := "PgDn",  sendKey := "PgDn"
+    } else if (ErrorLevel = "EndKey:Up") {
+        capturedKey := "Up",    sendKey := "Up"
+    } else if (ErrorLevel = "EndKey:Down") {
+        capturedKey := "Down",  sendKey := "Down"
+    } else if (ErrorLevel = "EndKey:Left") {
+        capturedKey := "Left",  sendKey := "Left"
+    } else if (ErrorLevel = "EndKey:Right") {
+        capturedKey := "Right", sendKey := "Right"
+    } else if (ErrorLevel = "EndKey:F1") {
+        capturedKey := "F1",  sendKey := "F1"
+    } else if (ErrorLevel = "EndKey:F2") {
+        capturedKey := "F2",  sendKey := "F2"
+    } else if (ErrorLevel = "EndKey:F3") {
+        capturedKey := "F3",  sendKey := "F3"
+    } else if (ErrorLevel = "EndKey:F4") {
+        capturedKey := "F4",  sendKey := "F4"
+    } else if (ErrorLevel = "EndKey:F5") {
+        capturedKey := "F5",  sendKey := "F5"
+    } else if (ErrorLevel = "EndKey:F6") {
+        capturedKey := "F6",  sendKey := "F6"
+    } else if (ErrorLevel = "EndKey:F7") {
+        capturedKey := "F7",  sendKey := "F7"
+    } else if (ErrorLevel = "EndKey:F8") {
+        capturedKey := "F8",  sendKey := "F8"
+    } else if (ErrorLevel = "EndKey:F9") {
+        capturedKey := "F9",  sendKey := "F9"
+    } else if (ErrorLevel = "EndKey:F10") {
+        capturedKey := "F10", sendKey := "F10"
+    } else if (ErrorLevel = "EndKey:F11") {
+        capturedKey := "F11", sendKey := "F11"
+    } else if (ErrorLevel = "EndKey:F12") {
+        capturedKey := "F12", sendKey := "F12"
+    } else if (newKey != "") {
+        capturedKey := newKey
+        sendKey := newKey
+    }
+
+    if (capturedKey != "") {
+        keyboardKey := sendKey
+        cachedButton := "Keyboard"
+        newLabel := "Keyboard - """ . capturedKey . """"
+        GuiControl,, MouseButtonChoice, |Left Mouse|Right Mouse|Middle Mouse|%newLabel%
+        GuiControl, ChooseString, MouseButtonChoice, %newLabel%
+    } else {
+        cachedButton := "Left"
+        keyboardKey := ""
+        GuiControl,, MouseButtonChoice, |Left Mouse|Right Mouse|Middle Mouse|Keyboard - "?"
+        GuiControl, ChooseString, MouseButtonChoice, Left Mouse
+    }
+
+    settingKeyboardKey := false
 return
 
 GuiClose:
@@ -187,6 +293,11 @@ ClickHold:
             MsgBox, 48, AutoClicker, With RND mode enabled, minimum delay is 10 ms!
             return
         }
+
+        if (cachedButton = "Keyboard" && keyboardKey = "") {
+            MsgBox, 48, AutoClicker, Please set a keyboard key first!
+            return
+        }
         
         holdEnabled := true
         GuiControl, Show, HoldLabel
@@ -206,7 +317,11 @@ ClickHold:
         GuiControl,, IndicatorBar, 100
         GuiControl, +c00B000, IndicatorBar
         
-        currentHoldHotkey := (cachedButton = "Right" ? "RButton" : (cachedButton = "Middle" ? "MButton" : "LButton"))
+        if (cachedButton = "Keyboard") {
+            currentHoldHotkey := keyboardKey
+        } else {
+            currentHoldHotkey := (cachedButton = "Right" ? "RButton" : (cachedButton = "Middle" ? "MButton" : "LButton"))
+        }
         Hotkey, ~$*%currentHoldHotkey%, HoldAutoFire, On
     }
 return
@@ -230,7 +345,6 @@ ToggleScript:
     enabled := !enabled
     if (enabled) {
         Gosub, UpdateDelay
-        Gosub, UpdateButton
         
         if (cachedDelay = "" || !RegExMatch(cachedDelay, "^\d+$") || cachedDelay < 1) {
             MsgBox, 48, AutoClicker, Please enter a valid delay in milliseconds (minimum delay is 1 ms)!
@@ -239,6 +353,12 @@ ToggleScript:
         }
         if (randomEnabled && cachedDelay < 10) {
             MsgBox, 48, AutoClicker, With RND mode enabled, minimum delay is 10 ms!
+            enabled := false
+            return
+        }
+
+        if (cachedButton = "Keyboard" && keyboardKey = "") {
+            MsgBox, 48, AutoClicker, Please set a keyboard key first!
             enabled := false
             return
         }
@@ -269,7 +389,9 @@ MaxSpeedClick:
     Loop {
         if (!enabled)
             break
-        if (cachedButton = "Right") {
+        if (cachedButton = "Keyboard") {
+            Send, {%keyboardKey%}
+        } else if (cachedButton = "Right") {
             DllCall("mouse_event", "UInt", 0x08, "Int", 0, "Int", 0, "UInt", 0, "UPtr", 0)
             DllCall("mouse_event", "UInt", 0x10, "Int", 0, "Int", 0, "UInt", 0, "UPtr", 0)
         } else if (cachedButton = "Middle") {
@@ -289,7 +411,9 @@ MaxSpeedClick:
 return
 
 PreciseClick:
-    if (cachedButton = "Right") {
+    if (cachedButton = "Keyboard") {
+        Send, {%keyboardKey%}
+    } else if (cachedButton = "Right") {
         DllCall("mouse_event", "UInt", 0x08, "Int", 0, "Int", 0, "UInt", 0, "UPtr", 0)
         DllCall("mouse_event", "UInt", 0x10, "Int", 0, "Int", 0, "UInt", 0, "UPtr", 0)
     } else if (cachedButton = "Middle") {
@@ -301,8 +425,9 @@ PreciseClick:
     }
 
     if (randomEnabled) {
-        min_delay := max(10, cachedDelay - 70)
-        Random, randomDelay, %min_delay%, %cachedDelay%
+        min_delay := max(1, Round(cachedDelay * 0.70))
+        max_delay := Round(cachedDelay * 1.30)
+        Random, randomDelay, %min_delay%, %max_delay%
         DllCall("Sleep", "UInt", randomDelay)
     }
 return
@@ -311,7 +436,9 @@ HoldAutoFire:
     if (!holdEnabled)
         return
     while GetKeyState(currentHoldHotkey, "P") {
-        if (cachedButton = "Right") {
+        if (cachedButton = "Keyboard") {
+            Send, {%keyboardKey%}
+        } else if (cachedButton = "Right") {
             DllCall("mouse_event", "UInt", 0x08, "Int", 0, "Int", 0, "UInt", 0, "UPtr", 0)
             DllCall("mouse_event", "UInt", 0x10, "Int", 0, "Int", 0, "UInt", 0, "UPtr", 0)
         } else if (cachedButton = "Middle") {
@@ -323,8 +450,9 @@ HoldAutoFire:
         }
 
         if (randomEnabled) {
-            min_delay := max(10, cachedDelay - 70)
-            Random, randomDelay, %min_delay%, %cachedDelay%
+            min_delay := max(1, Round(cachedDelay * 0.70))
+            max_delay := Round(cachedDelay * 1.30)
+            Random, randomDelay, %min_delay%, %max_delay%
             DllCall("Sleep", "UInt", randomDelay)
         } else if (cachedDelay = 1) {
             DllCall("Sleep", "UInt", 1)
